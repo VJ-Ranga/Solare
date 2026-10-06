@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 520 380">
+  <defs>
+    <radialGradient id="pg" cx="50%" cy="100%" r="100%">
+      <stop offset="0" stop-color="#E8467F"/>
+      <stop offset=".35" stop-color="#F7B3C8"/>
+      <stop offset="1" stop-color="#FFF0F5"/>
+    </radialGradient>
+    <radialGradient id="bud" cx="40%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#FFD6E2"/>
+      <stop offset="1" stop-color="#E8467F"/>
+    </radialGradient>
+    <path id="petal" d="M0 0C-11-7-14-22-7-33Q-3-29 0-31Q3-29 7-33C14-22 11-7 0 0Z" fill="url(#pg)"/>
+    <g id="flower">
+      <use xlink:href="#petal"/>
+      <use xlink:href="#petal" transform="rotate(72)"/>
+      <use xlink:href="#petal" transform="rotate(144)"/>
+      <use xlink:href="#petal" transform="rotate(216)"/>
+      <use xlink:href="#petal" transform="rotate(288)"/>
+      <g stroke="#C2185B" stroke-width="1.2" stroke-linecap="round">
+        <path d="M0 0L0-12M0 0L11-4M0 0L7 10M0 0L-7 10M0 0L-11-4"/>
+      </g>
+      <g fill="#FFD12D">
+        <circle cy="-12" r="1.8"/><circle cx="11" cy="-4" r="1.8"/><circle cx="7" cy="10" r="1.8"/><circle cx="-7" cy="10" r="1.8"/><circle cx="-11" cy="-4" r="1.8"/>
+      </g>
+      <circle r="3.2" fill="#B0124F"/>
+    </g>
+  </defs>
+  <!-- branches -->
+  <g fill="none" stroke="#4A2A22" stroke-linecap="round">
+    <path d="M540 20C470 40 420 52 360 90C300 128 250 140 180 150C130 157 90 175 40 215" stroke-width="11"/>
+    <path d="M360 90C350 140 330 180 290 220" stroke-width="6"/>
+    <path d="M250 142C235 115 215 98 180 80" stroke-width="5"/>
+    <path d="M180 150C165 190 160 230 168 275" stroke-width="4.5"/>
+    <path d="M470 45C460 85 470 120 455 160" stroke-width="5"/>
+    <path d="M110 170C95 150 72 140 45 140" stroke-width="3.5"/>
+  </g>
+  <!-- flowers -->
+  <g>
+    <use xlink:href="#flower" transform="translate(420 62) rotate(10) scale(1.15)"/>
+    <use xlink:href="#flower" transform="translate(372 120) rotate(40) scale(.95)"/>
+    <use xlink:href="#flower" transform="translate(300 118) rotate(-20) scale(1.25)"/>
+    <use xlink:href="#flower" transform="translate(292 222) rotate(25)"/>
+    <use xlink:href="#flower" transform="translate(330 175) rotate(5) scale(.8)"/>
+    <use xlink:href="#flower" transform="translate(222 150) rotate(60) scale(1.05)"/>
+    <use xlink:href="#flower" transform="translate(182 80) rotate(15) scale(.9)"/>
+    <use xlink:href="#flower" transform="translate(168 270) rotate(-30) scale(.95)"/>
+    <use xlink:href="#flower" transform="translate(160 205) rotate(48) scale(.75)"/>
+    <use xlink:href="#flower" transform="translate(110 172) rotate(-10) scale(1.1)"/>
+    <use xlink:href="#flower" transform="translate(50 140) rotate(30) scale(.85)"/>
+    <use xlink:href="#flower" transform="translate(45 214) rotate(70) scale(1)"/>
+    <use xlink:href="#flower" transform="translate(456 160) rotate(-15) scale(1.05)"/>
+    <use xlink:href="#flower" transform="translate(495 38) rotate(35) scale(.9)"/>
+  </g>
+  <!-- buds -->
+  <g fill="url(#bud)">
+    <ellipse cx="255" cy="104" rx="6" ry="9" transform="rotate(-30 255 104)"/>
+    <ellipse cx="340" cy="92" rx="5" ry="8" transform="rotate(20 340 92)"/>
+    <ellipse cx="140" cy="160" rx="5" ry="8" transform="rotate(-50 140 160)"/>
+    <ellipse cx="78" cy="196" rx="5" ry="8" transform="rotate(-40 78 196)"/>
+    <ellipse cx="468" cy="110" rx="5" ry="8" transform="rotate(10 468 110)"/>
+  </g>
+</svg>

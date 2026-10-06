@@ -1,0 +1,8 @@
+# Local tooling
+.remember/
+.claude/
+
+# Client source files — kept local (repo is public)
+*.ai
+WhatsApp Image*.jpeg
+index (2).html
