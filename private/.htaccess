@@ -1,0 +1,2 @@
+# This folder must never be web-accessible. Keep it outside public_html.
+Require all denied

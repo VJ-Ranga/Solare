@@ -412,6 +412,10 @@ img { max-width: 100%; }
 .form-card .invalid-feedback { font-size: .8125rem; }
 .form-card .form-check-input:checked { background-color: var(--sl-pink); border-color: var(--sl-pink); }
 .form-card .form-check-label { font-size: .875rem; color: var(--sl-muted); }
+.form-alert { display: flex; gap: .75rem; align-items: flex-start; padding: .9rem 1.1rem; border-radius: var(--r-sm); background: #FEF2F2; border: 1px solid #FCA5A5; color: #991B1B; font-size: .9375rem; }
+.form-alert[hidden] { display: none; }
+.form-alert i { margin-top: .2rem; }
+.form-alert a { color: #991B1B; font-weight: 600; text-decoration: underline; }
 .hp-field { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
 .form-success { display: none; text-align: center; padding: 2rem 1rem; }
 .form-success .ico { width: 84px; height: 84px; margin: 0 auto 1.25rem; border-radius: 50%; display: grid; place-items: center; font-size: 2rem; color: #fff; background: var(--sl-success); box-shadow: 0 12px 30px rgba(22,163,74,.35); }

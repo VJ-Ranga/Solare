@@ -6,3 +6,6 @@
 *.ai
 WhatsApp Image*.jpeg
 index (2).html
+
+# Secrets — config.php exists only on each server / local machine
+private/config.php

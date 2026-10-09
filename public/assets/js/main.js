@@ -258,9 +258,33 @@
     else if (scrollY < $(".hero").offsetHeight) heroPetals.start(); else sitePetals.start();
   });
 
-  /* ---------- Enquiry form (demo: validates, no data sent) ---------- */
-  const form = $("#enquiryForm"), card = $("#formCard"), btn = $("#submitBtn");
-  const loadedAt = Date.now();
+  /* ---------- Enquiry form — posts to send.php ---------- */
+  const form = $("#enquiryForm"), card = $("#formCard"), btn = $("#submitBtn"), alertBox = $("#formAlert");
+  const fieldIds = { name: "fName", phone: "fPhone", email: "fEmail", age: "fAge", program: "fProgram", consent: "fConsent" };
+  let token = "", turnstileOn = false;
+
+  const getToken = () => fetch(form.action, { headers: { Accept: "application/json" }, cache: "no-store" })
+    .then(r => r.json())
+    .then(d => {
+      if (!d.ok) return;
+      token = d.token;
+      if (d.turnstile && !turnstileOn) {                          // optional Cloudflare Turnstile
+        turnstileOn = true;
+        const box = $("#turnstileBox"); box.hidden = false;
+        box.innerHTML = `<div class="cf-turnstile" data-sitekey="${esc(d.turnstile)}"></div>`;
+        const s = document.createElement("script");
+        s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js"; s.async = true; s.defer = true;
+        document.head.appendChild(s);
+      }
+    })
+    .catch(() => {});                                              // e.g. static preview with no PHP
+  getToken();
+
+  const showAlert = msg => {
+    alertBox.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i><span>${esc(msg)} ` +
+      `<a href="${waLink()}" target="_blank" rel="noopener">Message us on WhatsApp</a></span>`;
+    alertBox.hidden = false;
+  };
 
   const validate = el => {
     let ok = el.checkValidity();
@@ -273,30 +297,47 @@
     el.addEventListener("input", () => { if (el.classList.contains("is-invalid")) validate(el); });
   });
 
-  form.addEventListener("submit", e => {
+  const setBusy = busy => {
+    btn.disabled = busy;
+    $(".lbl", btn).textContent = busy ? "Sending…" : "Send my request";
+  };
+
+  form.addEventListener("submit", async e => {
     e.preventDefault();
+    alertBox.hidden = true;
     const els = $$("input:not([type=radio]):not(#fWebsite), select, textarea", form);
     const allOk = els.map(validate).every(Boolean);
     if (!allOk) { const first = $(".is-invalid", form); first && first.focus(); return; }
 
-    // Spam checks (the live version repeats these on the server)
-    if ($("#fWebsite").value || Date.now() - loadedAt < 3000) return;
-
-    const d = Object.fromEntries(new FormData(form));
-    btn.disabled = true;
-    $(".lbl", btn).textContent = "Sending…";
-    setTimeout(() => {                                           // simulate network request
-      $("#okName").textContent = d.name.trim().split(" ")[0];
+    const fd = new FormData(form);
+    fd.append("token", token);
+    setBusy(true);
+    try {
+      const res = await fetch(form.action, { method: "POST", body: fd, headers: { Accept: "application/json" } });
+      const d = await res.json().catch(() => ({ ok: false, message: "Something went wrong." }));
+      if (!d.ok) {
+        if (d.errors) Object.keys(d.errors).forEach(k => { const el = $("#" + fieldIds[k]); el && el.classList.add("is-invalid"); });
+        if (d.refresh) getToken();
+        if (window.turnstile && turnstileOn) window.turnstile.reset();
+        showAlert(d.message || "Something went wrong.");
+        return;
+      }
+      const v = Object.fromEntries(fd);
+      $("#okName").textContent = v.name.trim().split(" ")[0];
       $("#okWa").href = waLink(
-        `Hello Solare, my name is ${d.name}. I am ${d.age} years old and interested in ${d.program}` +
-        `${d.sector ? " (" + d.sector + ")" : ""}. Japanese level: ${d.jlpt}. ${d.message || ""}`.trim());
+        `Hello Solare, my name is ${v.name}. I am ${v.age} years old and interested in ${v.program}` +
+        `${v.sector ? " (" + v.sector + ")" : ""}. Japanese level: ${v.jlpt}. ${v.message || ""}`.trim());
       card.classList.add("is-sent");
-      btn.disabled = false; $(".lbl", btn).textContent = "Send my request";
       card.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
-    }, 900);
+      getToken();                                                  // fresh token for "Send another"
+    } catch (err) {
+      showAlert("We could not reach the server. Please check your connection.");
+    } finally {
+      setBusy(false);
+    }
   });
   $("#formReset").addEventListener("click", () => {
-    form.reset(); $$(".is-invalid", form).forEach(el => el.classList.remove("is-invalid"));
+    form.reset(); $$(".is-invalid", form).forEach(el => el.classList.remove("is-invalid")); alertBox.hidden = true;
     card.classList.remove("is-sent"); $("#fName").focus();
   });
 })();

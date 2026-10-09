@@ -339,7 +339,7 @@
 
       <div class="col-lg-7">
         <div class="form-card reveal from-right" id="formCard">
-          <form id="enquiryForm" novalidate>
+          <form id="enquiryForm" action="send.php" method="post" novalidate>
             <h3 class="mb-1">Free consultation request</h3>
             <p class="text-muted small mb-4">Fields marked <span class="text-danger">*</span> are required. We never share your details.</p>
             <div class="row g-3">
@@ -405,9 +405,12 @@
                   <div class="invalid-feedback">Please tick to let us contact you.</div>
                 </div>
               </div>
+              <div class="col-12" id="turnstileBox" hidden></div>
+              <div class="col-12">
+                <div class="form-alert" id="formAlert" role="alert" hidden></div>
+              </div>
               <div class="col-12 d-flex flex-wrap gap-3 align-items-center pt-2">
                 <button class="btn-sl btn-sl--lg" type="submit" id="submitBtn"><span class="lbl">Send my request</span> <i class="fa-solid fa-paper-plane"></i></button>
-                <span class="demo-note">Demo form — no data is sent yet.</span>
               </div>
             </div>
           </form>

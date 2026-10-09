@@ -4,10 +4,11 @@ Client: Solare Foreign Employment (Pvt) Ltd — Sri Lankan agency sending worker
 Programmes: Engineer / Humanities, Specified Skilled Worker (SSW), Employment for Skill Development.
 
 ## Status
-- [x] HTML demo landing page — `demo/index.html` (Bootstrap 5, Font Awesome, Poppins)
-- [ ] Client review of demo
-- [ ] Build in WordPress (block theme + Fluent Forms + FluentSMTP + SEO plugin)
-- [ ] Deploy to cPanel hosting (client buying separate small hosting + domain)
+- [x] HTML landing page — `public/index.html` (Bootstrap 5, Font Awesome, Poppins)
+- [x] Working enquiry form — `public/send.php` + PHPMailer (no WordPress)
+- [ ] Client review
+- [ ] Deploy to our shared hosting (cPanel or Hestia) and point solarejapan.com.lk
+- [ ] Turn on SPF / DKIM / DMARC for solarejapan.com.lk
 
 ## Waiting on client
 - Hotline phone number
@@ -22,8 +23,40 @@ Programmes: Engineer / Humanities, Specified Skilled Worker (SSW), Employment fo
 - Domain: solarejapan.com.lk (confirmed 2026-10-09)
 - Email: info@solarejapan.com.lk (confirmed 2026-10-09)
 
+## Email
+- Sender (SMTP login): web@solarejapan.com.lk — password only in `private/config.php` on the server
+- Enquiries go to: info@solarejapan.com.lk (client's inbox)
+- Applicant gets an auto-reply (from web@, Reply-To info@) if they give an email
+- Every enquiry is also saved to `private/storage/leads.csv`; errors go to `private/storage/error.log`
+
+## Folder layout
+- `public/`  → goes in public_html (web root)
+- `private/` → goes next to public_html as `private/` (config, PHPMailer, storage — never web-accessible)
+- `deploy.sh` → run on the server to pull from GitHub and copy files
+
+## Deploy (terminal)
+First time on the server (SSH):
+```
+git clone https://github.com/VJ-Ranga/Solare.git ~/solare-repo
+cd ~/solare-repo
+./deploy.sh ~/public_html                              # cPanel
+./deploy.sh ~/web/solarejapan.com.lk/public_html       # Hestia
+nano ~/private/config.php                              # cPanel path; Hestia: ~/web/solarejapan.com.lk/private/config.php
+php ~/private/test-mail.php info@solarejapan.com.lk    # check SMTP works
+```
+In config.php set: smtp host (server mail hostname), port 465 + ssl, password, and a secret:
+`php -r "echo bin2hex(random_bytes(32));"`
+
+Every update after that:
+```
+cd ~/solare-repo && ./deploy.sh ~/public_html
+```
+
+## Local testing
+`php -S localhost:8131 -t public` — local `private/config.php` points SMTP at a fake mail sink (no real email).
+
 ## Editing content
-All contact details and section content live in `demo/assets/data.js`.
+All contact details and section content live in `public/assets/data.js`.
 Items with `status: "tbc"` show a yellow TBC badge until replaced.
 
 ## Brand
@@ -32,4 +65,4 @@ Items with `status: "tbc"` show a yellow TBC badge until replaced.
 - Fonts: Poppins (EN), Noto Sans Sinhala (SI), Noto Serif JP (Japanese accents)
 
 ## Preview locally
-`python3 -m http.server 8130 --directory demo` then open http://localhost:8130
+`php -S localhost:8131 -t public` then open http://localhost:8131
