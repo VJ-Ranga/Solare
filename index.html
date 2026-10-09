@@ -23,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://images.pexels.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@500;700&family=Noto+Serif+JP:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
@@ -74,23 +75,33 @@
 </header>
 
 <!-- MOBILE NAV -->
-<div class="offcanvas offcanvas-end offcanvas-nav" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">
-  <div class="offcanvas-header">
-    <img src="assets/img/logo-white.webp" alt="Solare" height="38" width="164" id="mobileNavLabel">
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close menu"></button>
+<div class="offcanvas offcanvas-end mnav" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavTitle">
+  <img class="mnav-branch" src="assets/img/sakura-branch.svg" alt="" aria-hidden="true">
+  <div class="mnav-kanji jp" aria-hidden="true">日本</div>
+  <div class="offcanvas-header mnav-head">
+    <img src="assets/img/logo-white.webp" alt="Solare Foreign Employment" height="40" width="172">
+    <button type="button" class="mnav-close" data-bs-dismiss="offcanvas" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
   </div>
-  <div class="offcanvas-body d-flex flex-column">
-    <nav aria-label="Mobile">
-      <a href="#programs" data-bs-dismiss="offcanvas">Programmes <i class="fa-solid fa-arrow-right"></i></a>
-      <a href="#sectors" data-bs-dismiss="offcanvas">Job sectors <i class="fa-solid fa-arrow-right"></i></a>
-      <a href="#process" data-bs-dismiss="offcanvas">How it works <i class="fa-solid fa-arrow-right"></i></a>
-      <a href="#why" data-bs-dismiss="offcanvas">About us <i class="fa-solid fa-arrow-right"></i></a>
-      <a href="#faq" data-bs-dismiss="offcanvas">FAQ <i class="fa-solid fa-arrow-right"></i></a>
-      <a href="#contact" data-bs-dismiss="offcanvas">Contact <i class="fa-solid fa-arrow-right"></i></a>
+  <div class="offcanvas-body mnav-body">
+    <h2 class="mnav-eyebrow" id="mobileNavTitle">Menu <span class="jp">メニュー</span></h2>
+    <nav class="mnav-links" aria-label="Mobile">
+      <a href="#programs" data-bs-dismiss="offcanvas" style="--i:0"><span class="n">01</span><span class="t">Programmes<small class="jp">在留資格</small></span><i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#sectors"  data-bs-dismiss="offcanvas" style="--i:1"><span class="n">02</span><span class="t">Job sectors<small class="jp">分野</small></span><i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#process"  data-bs-dismiss="offcanvas" style="--i:2"><span class="n">03</span><span class="t">How it works<small class="jp">流れ</small></span><i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#why"      data-bs-dismiss="offcanvas" style="--i:3"><span class="n">04</span><span class="t">About us<small class="jp">私たち</small></span><i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#faq"      data-bs-dismiss="offcanvas" style="--i:4"><span class="n">05</span><span class="t">FAQ<small class="jp">質問</small></span><i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#contact"  data-bs-dismiss="offcanvas" style="--i:5"><span class="n">06</span><span class="t">Contact<small class="jp">連絡</small></span><i class="fa-solid fa-arrow-right"></i></a>
     </nav>
-    <div class="mt-auto pt-4 d-grid gap-2">
-      <a class="btn-sl" href="#contact" data-bs-dismiss="offcanvas">Apply now</a>
-      <a class="btn-sl btn-sl--wa" data-wa href="#" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
+    <div class="mnav-foot">
+      <div class="mnav-quick">
+        <a data-tel href="#"><i class="fa-solid fa-phone-volume"></i><span><small>Hotline</small><b data-field="phone"></b></span></a>
+        <a data-mail href="#"><i class="fa-solid fa-envelope"></i><span><small>Email</small><b data-field="email"></b></span></a>
+      </div>
+      <div class="mnav-cta">
+        <a class="btn-sl" href="#contact" data-bs-dismiss="offcanvas">Apply now <i class="fa-solid fa-arrow-right"></i></a>
+        <a class="btn-sl btn-sl--wa" data-wa href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      </div>
+      <div class="socials" data-socials></div>
     </div>
   </div>
 </div>
@@ -195,10 +206,10 @@
           <span class="sun-ring" aria-hidden="true"></span>
           <div class="img-a">
             <span class="demo-tag"><i class="fa-solid fa-image"></i> Demo image</span>
-            <img src="https://images.unsplash.com/photo-1758520144437-f068ecaf0d83?w=900&q=70&auto=format&fit=crop" alt="A Solare advisor interviewing a candidate" loading="lazy">
+            <img src="https://images.pexels.com/photos/7581016/pexels-photo-7581016.jpeg?auto=compress&cs=tinysrgb&w=900" alt="A Solare advisor interviewing a candidate" loading="lazy">
           </div>
           <div class="img-b">
-            <img src="https://images.unsplash.com/photo-1561131668-f63504fc549d?w=700&q=70&auto=format&fit=crop" alt="Travellers in an airport terminal ready to depart" loading="lazy">
+            <img src="https://images.pexels.com/photos/6726195/pexels-photo-6726195.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Travellers in an airport terminal ready to depart" loading="lazy">
           </div>
           <div class="badge-float">
             <span class="ico"><i class="fa-solid fa-torii-gate"></i></span>
@@ -244,7 +255,7 @@
       <div class="col-lg-6 order-lg-2">
         <div class="training-media reveal from-right">
           <span class="demo-tag"><i class="fa-solid fa-image"></i> Demo image</span>
-          <img src="https://images.unsplash.com/photo-1742549586702-c23994895082?w=1000&q=70&auto=format&fit=crop" alt="Students studying Japanese in a classroom" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1742549586702-c23994895082?w=1000&q=70&auto=format&fit=crop" alt="Students preparing for a Japanese language test" loading="lazy">
         </div>
       </div>
       <div class="col-lg-6 reveal">
@@ -441,7 +452,7 @@
           <i class="fa-solid fa-certificate"></i>
           <span>SLBFE Licence No. <b data-field="licence"></b></span>
         </div>
-        <div class="socials" id="socials"></div>
+        <div class="socials" data-socials></div>
       </div>
       <div class="col-6 col-lg-2">
         <h5>Explore</h5>
