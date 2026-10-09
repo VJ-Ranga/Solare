@@ -37,14 +37,12 @@
   $("#year").textContent = new Date().getFullYear();
 
   /* ---------- Render sections from data.js ---------- */
-  const demoTag = '<span class="demo-tag"><i class="fa-solid fa-image"></i> Demo image</span>';
 
   $("#programGrid").innerHTML = D.programs.map((p, i) => `
     <div class="col-md-6 col-lg-4">
       <article class="prog-card reveal ${p.featured ? "is-featured" : ""}" style="--d:${i * .12}s">
         ${p.featured ? '<span class="ribbon">Most popular</span>' : ""}
         <div class="media">
-          ${demoTag}
           <img src="${p.image}" alt="${esc(p.title)} programme" loading="lazy">
           <span class="tag-jp jp">${esc(p.tag)}</span>
         </div>
@@ -69,7 +67,6 @@
   $("#sectorGrid").innerHTML = D.sectors.map((s, i) => `
     <div class="col-sm-6 col-lg-3">
       <a class="sector-card reveal zoom" href="#contact" data-sector="${esc(s.title)}" style="--d:${(i % 4) * .08}s">
-        ${demoTag}
         <img src="${s.image}" alt="" loading="lazy">
         <div class="inner">
           <span class="ico"><i class="fa-solid ${s.icon}"></i></span>
@@ -106,7 +103,6 @@
 
   $("#galleryGrid").innerHTML = D.gallery.map((g, i) => `
     <figure class="g-item reveal zoom m-0" style="--d:${i * .08}s">
-      ${demoTag}
       <img src="${g.src}" alt="${esc(g.alt)}" loading="lazy">
       <figcaption>${esc(g.label)}</figcaption>
     </figure>`).join("");
@@ -136,12 +132,6 @@
     const p = e.target.closest("[data-program]"); if (p) $("#fProgram").value = p.dataset.program;
     const s = e.target.closest("[data-sector]");  if (s) $("#fSector").value = s.dataset.sector;
   });
-
-  /* ---------- Demo bar ---------- */
-  const bar = $("#demoBar");
-  const setBarH = () => document.documentElement.style.setProperty("--demo-bar-h", bar && bar.isConnected ? bar.offsetHeight + "px" : "0px");
-  setBarH(); addEventListener("resize", setBarH);
-  $("#demoBarClose").addEventListener("click", () => { bar.remove(); document.body.classList.remove("has-demo-bar"); setBarH(); });
 
   /* ---------- Header / back-to-top ---------- */
   const header = $("#siteHeader"), toTop = $("#toTop");
