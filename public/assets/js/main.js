@@ -31,8 +31,9 @@
   $$("[data-field]").forEach(el => el.innerHTML = fields[el.dataset.field] || "");
 
   const socialIcons = { facebook: "fa-facebook-f", instagram: "fa-instagram", tiktok: "fa-tiktok", youtube: "fa-youtube" };
-  $("#socials").innerHTML = Object.entries(C.social).map(([k, url]) =>
+  const socialHtml = Object.entries(C.social).map(([k, url]) =>
     `<a href="${esc(url)}" aria-label="Solare on ${k}" target="_blank" rel="noopener"><i class="fa-brands ${socialIcons[k]}"></i></a>`).join("");
+  $$("[data-socials]").forEach(el => el.innerHTML = socialHtml);
   $("#year").textContent = new Date().getFullYear();
 
   /* ---------- Render sections from data.js ---------- */
@@ -46,6 +47,7 @@
           ${demoTag}
           <img src="${p.image}" alt="${esc(p.title)} programme" loading="lazy">
           <span class="tag-jp jp">${esc(p.tag)}</span>
+          <span class="hanko jp" aria-hidden="true">日本</span>
         </div>
         <div class="body">
           <span class="icon-badge"><i class="fa-solid ${p.icon}"></i></span>
@@ -70,9 +72,10 @@
       <a class="sector-card reveal zoom" href="#contact" data-sector="${esc(s.title)}" style="--d:${(i % 4) * .08}s">
         ${demoTag}
         <img src="${s.image}" alt="" loading="lazy">
+        <span class="hanko hanko--sm jp" aria-hidden="true">${esc(s.jp)}</span>
         <div class="inner">
           <span class="ico"><i class="fa-solid ${s.icon}"></i></span>
-          <h3>${esc(s.title)}<span class="jp">${esc(s.jp)}</span></h3>
+          <h3>${esc(s.title)}</h3>
           <p>${esc(s.text)}</p>
         </div>
       </a>
