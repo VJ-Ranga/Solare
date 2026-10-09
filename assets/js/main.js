@@ -72,10 +72,9 @@
       <a class="sector-card reveal zoom" href="#contact" data-sector="${esc(s.title)}" style="--d:${(i % 4) * .08}s">
         ${demoTag}
         <img src="${s.image}" alt="" loading="lazy">
-        <span class="hanko hanko--sm jp" aria-hidden="true">${esc(s.jp)}</span>
         <div class="inner">
           <span class="ico"><i class="fa-solid ${s.icon}"></i></span>
-          <h3>${esc(s.title)}</h3>
+          <h3>${esc(s.title)}<span class="jp">${esc(s.jp)}</span></h3>
           <p>${esc(s.text)}</p>
         </div>
       </a>
