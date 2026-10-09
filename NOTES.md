@@ -18,7 +18,7 @@ Programmes: Engineer / Humanities, Specified Skilled Worker (SSW), Employment fo
 - Real office / team / departure photos (demo uses Unsplash stock — marked "Demo image")
 - Real headline numbers (stats section shows demo figures)
 - Social media links (Facebook, Instagram, TikTok, YouTube)
-- Domain name
+- Domain: solarejapan.com.lk — VJ buying (not live yet, 2026-10-09)
 
 ## Editing content
 All contact details and section content live in `demo/assets/data.js`.
