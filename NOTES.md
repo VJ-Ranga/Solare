@@ -12,13 +12,15 @@ Programmes: Engineer / Humanities, Specified Skilled Worker (SSW), Employment fo
 ## Waiting on client
 - Hotline phone number
 - WhatsApp number
-- Email address (on the new domain)
 - SLBFE licence number
 - Office address + Google Maps pin
 - Real office / team / departure photos (demo uses Unsplash stock — marked "Demo image")
 - Real headline numbers (stats section shows demo figures)
 - Social media links (Facebook, Instagram, TikTok, YouTube)
-- Domain: solarejapan.com.lk — VJ buying (not live yet, 2026-10-09)
+
+## Confirmed
+- Domain: solarejapan.com.lk (confirmed 2026-10-09)
+- Email: info@solarejapan.com.lk (confirmed 2026-10-09)
 
 ## Editing content
 All contact details and section content live in `demo/assets/data.js`.

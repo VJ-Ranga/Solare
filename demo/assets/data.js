@@ -9,7 +9,7 @@ window.SOLARE = {
   contact: {
     phone:       { display: "+94 XX XXX XXXX", tel: "",            status: "tbc" },
     whatsapp:    { display: "+94 XX XXX XXXX", number: "",         status: "tbc" }, // digits only, e.g. 94771234567
-    email:       { display: "info@solarejapan.com.lk", status: "tbc" },
+    email:       { display: "info@solarejapan.com.lk", status: "ok" },
     address:     { lines: ["No. 00, Galle Road", "Colombo 03, Sri Lanka"], status: "demo" },
     hours:       "Mon – Sat · 9.00 am – 5.30 pm",
     licence:     { number: "XXXX", status: "tbc" },              // SLBFE licence number
