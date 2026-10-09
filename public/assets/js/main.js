@@ -47,7 +47,6 @@
           ${demoTag}
           <img src="${p.image}" alt="${esc(p.title)} programme" loading="lazy">
           <span class="tag-jp jp">${esc(p.tag)}</span>
-          <span class="hanko jp" aria-hidden="true">日本</span>
         </div>
         <div class="body">
           <span class="icon-badge"><i class="fa-solid ${p.icon}"></i></span>

@@ -327,12 +327,7 @@ img { max-width: 100%; }
 .prog-card.is-featured { border-color: var(--sl-pink); }
 .prog-card .ribbon { position: absolute; z-index: 3; top: 16px; right: 16px; background: var(--sl-gold); color: var(--sl-ink); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .35rem .75rem; border-radius: var(--r-pill); }
 
-/* Japanese touches — hanko stamp + seigaiha wave pattern */
-.hanko { position: absolute; z-index: 3; top: 14px; right: 14px; width: 46px; height: 46px; border-radius: 50%;
-  display: grid; place-items: center; font-size: .8rem; font-weight: 700; letter-spacing: .05em; color: #fff;
-  background: #C8102E; border: 2px solid rgba(255,255,255,.85); box-shadow: 0 6px 16px rgba(200,16,46,.4); transform: rotate(-12deg); }
-.hanko--sm { width: 40px; height: 40px; font-size: .72rem; }
-.prog-card .ribbon { right: 70px; }
+/* Japanese touch — seigaiha wave pattern */
 .programs::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
   background-image: radial-gradient(circle at 50% 100%, transparent 18px, var(--sl-sakura-200) 19px, var(--sl-sakura-200) 20px, transparent 21px, transparent 28px, var(--sl-sakura-200) 29px, var(--sl-sakura-200) 30px, transparent 31px);
   background-size: 60px 30px; -webkit-mask-image: linear-gradient(180deg, #000, transparent 45%); mask-image: linear-gradient(180deg, #000, transparent 45%); }
