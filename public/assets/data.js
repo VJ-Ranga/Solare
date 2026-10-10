@@ -38,7 +38,7 @@ window.SOLARE = {
       title: "Engineer / Humanities",
       text: "For graduates and diploma holders — IT, engineering, design, interpreting, sales and office roles with long-term career growth.",
       points: ["Degree or diploma required", "Renewable work visa", "Family can join you"],
-      image: "https://images.unsplash.com/photo-1581091212991-8891c7d4bd9b?w=900&q=70&auto=format&fit=crop",
+      image: "assets/img/photos/engineer.webp",
       icon: "fa-user-tie"
     },
     {
@@ -47,7 +47,7 @@ window.SOLARE = {
       title: "Specified Skilled Worker (SSW)",
       text: "Japan's main route for skilled workers in 16 industries. Pass a skills test and a Japanese test, and work up to five years — longer with SSW (ii).",
       points: ["Skills test + JLPT N4 / JFT-Basic", "Same pay as Japanese staff", "Change employer within your field"],
-      image: "https://images.unsplash.com/photo-1589793463357-5fb813435467?w=900&q=70&auto=format&fit=crop",
+      image: "assets/img/photos/factory.webp",
       icon: "fa-helmet-safety",
       featured: true
     },
@@ -57,20 +57,20 @@ window.SOLARE = {
       title: "Employment for Skill Development",
       text: "Japan's new system replacing Technical Intern Training. Learn on the job for three years and build the skills to move up to SSW.",
       points: ["Entry level — training on the job", "Clear path to SSW", "Stronger worker protection"],
-      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=900&q=70&auto=format&fit=crop",
+      image: "assets/img/photos/team-training.webp",
       icon: "fa-seedling"
     }
   ],
 
   /* ---------- Job sectors ---------- */
   sectors: [
-    { title: "Caregiving",     jp: "介護",   icon: "fa-hand-holding-heart", text: "Nursing homes and elderly day-care.",       image: "https://images.unsplash.com/photo-1765896387398-1e1ae8d2eb85?w=700&q=70&auto=format&fit=crop" },
-    { title: "Food service",   jp: "外食",   icon: "fa-utensils",           text: "Restaurants, kitchens and central kitchens.", image: "https://images.unsplash.com/photo-1721637713270-5470ea1d6389?w=700&q=70&auto=format&fit=crop" },
-    { title: "Manufacturing",  jp: "製造",   icon: "fa-gears",              text: "Factories, machinery and electronics.",      image: "https://images.unsplash.com/photo-1589793463357-5fb813435467?w=700&q=70&auto=format&fit=crop" },
-    { title: "Construction",   jp: "建設",   icon: "fa-trowel-bricks",      text: "Building, civil works and skilled trades.",  image: "https://images.unsplash.com/photo-1764685849160-e2bc5b07d15d?w=700&q=70&auto=format&fit=crop" },
-    { title: "Agriculture",    jp: "農業",   icon: "fa-wheat-awn",          text: "Farms, greenhouses and livestock.",          image: "https://images.unsplash.com/photo-1761839257946-4616bcfafec7?w=700&q=70&auto=format&fit=crop" },
-    { title: "Hospitality",    jp: "宿泊",   icon: "fa-bell-concierge",     text: "Hotels, ryokan and front-desk service.",     image: "https://images.unsplash.com/photo-1759038086832-795644825e3a?w=700&q=70&auto=format&fit=crop" },
-    { title: "IT & Engineering", jp: "技術", icon: "fa-microchip",          text: "Engineers, technicians and IT staff.",      image: "https://images.unsplash.com/photo-1581091212991-8891c7d4bd9b?w=700&q=70&auto=format&fit=crop" }
+    { title: "Caregiving",     jp: "介護",   icon: "fa-hand-holding-heart", text: "Nursing homes and elderly day-care.",       image: "assets/img/photos/caregiving.webp" },
+    { title: "Food service",   jp: "外食",   icon: "fa-utensils",           text: "Restaurants, kitchens and central kitchens.", image: "assets/img/photos/food-service.webp" },
+    { title: "Manufacturing",  jp: "製造",   icon: "fa-gears",              text: "Factories, machinery and electronics.",      image: "assets/img/photos/factory.webp" },
+    { title: "Construction",   jp: "建設",   icon: "fa-trowel-bricks",      text: "Building, civil works and skilled trades.",  image: "assets/img/photos/construction.webp" },
+    { title: "Agriculture",    jp: "農業",   icon: "fa-wheat-awn",          text: "Farms, greenhouses and livestock.",          image: "assets/img/photos/agriculture.webp" },
+    { title: "Hospitality",    jp: "宿泊",   icon: "fa-bell-concierge",     text: "Hotels, ryokan and front-desk service.",     image: "assets/img/photos/hospitality.webp" },
+    { title: "IT & Engineering", jp: "技術", icon: "fa-microchip",          text: "Engineers, technicians and IT staff.",      image: "assets/img/photos/engineer.webp" }
   ],
 
   /* ---------- How it works ---------- */
@@ -92,11 +92,11 @@ window.SOLARE = {
 
   /* ---------- Life in Japan gallery ---------- */
   gallery: [
-    { src: "https://images.unsplash.com/photo-1542931287-023b922fa89b?w=900&q=70&auto=format&fit=crop",  alt: "Tokyo side street under cherry blossoms", label: "Tokyo in spring" },
-    { src: "https://images.unsplash.com/photo-1514337224818-9787cf717f2a?w=900&q=70&auto=format&fit=crop", alt: "Shinkansen bullet train at a station",   label: "Shinkansen" },
-    { src: "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?w=900&q=70&auto=format&fit=crop", alt: "Kyoto street with Yasaka pagoda",        label: "Kyoto" },
-    { src: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=900&q=70&auto=format&fit=crop", alt: "Shibuya crossing at night",              label: "Shibuya nights" },
-    { src: "https://images.unsplash.com/photo-1744204876894-2591d3b1f42e?w=900&q=70&auto=format&fit=crop", alt: "Cherry blossoms over a river at night",  label: "Sakura season" }
+    { src: "assets/img/photos/tokyo-spring.webp",  alt: "Tokyo side street under cherry blossoms", label: "Tokyo in spring" },
+    { src: "assets/img/photos/shinkansen.webp", alt: "Shinkansen bullet train at a station",   label: "Shinkansen" },
+    { src: "assets/img/photos/kyoto.webp", alt: "Kyoto street with Yasaka pagoda",        label: "Kyoto" },
+    { src: "assets/img/photos/shibuya.webp", alt: "Shibuya crossing at night",              label: "Shibuya nights" },
+    { src: "assets/img/photos/sakura-night.webp", alt: "Cherry blossoms over a river at night",  label: "Sakura season" }
   ],
 
   /* ---------- FAQ ---------- */

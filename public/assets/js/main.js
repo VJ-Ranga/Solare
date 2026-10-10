@@ -1,5 +1,5 @@
 /* =========================================================
-   SOLARE — Demo interactions
+   SOLARE — site interactions
    ========================================================= */
 (function () {
   "use strict";
@@ -36,86 +36,8 @@
   $$("[data-socials]").forEach(el => el.innerHTML = socialHtml);
   $("#year").textContent = new Date().getFullYear();
 
-  /* ---------- Render sections from data.js ---------- */
-
-  $("#programGrid").innerHTML = D.programs.map((p, i) => `
-    <div class="col-md-6 col-lg-4">
-      <article class="prog-card reveal ${p.featured ? "is-featured" : ""}" style="--d:${i * .12}s">
-        ${p.featured ? '<span class="ribbon">Most popular</span>' : ""}
-        <div class="media">
-          <img src="${p.image}" alt="${esc(p.title)} programme" loading="lazy">
-          <span class="tag-jp jp">${esc(p.tag)}</span>
-        </div>
-        <div class="body">
-          <span class="icon-badge"><i class="fa-solid ${p.icon}"></i></span>
-          <h3>${esc(p.title)}</h3>
-          <p>${esc(p.text)}</p>
-          <ul class="check-list">${p.points.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
-          <a class="link-arrow" href="#contact" data-program="${esc(p.title)}">Apply for this programme <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </article>
-    </div>`).join("");
-
-  $("#statGrid").innerHTML = D.stats.map((s, i) => `
-    <div class="col-6 col-md-3 stat-col">
-      <div class="stat reveal" style="--d:${i * .1}s">
-        <div class="num"><span data-count="${s.value}">0</span><span class="suf">${esc(s.suffix)}</span></div>
-        <div class="lbl">${esc(s.label)}</div>
-      </div>
-    </div>`).join("");
-
-  $("#sectorGrid").innerHTML = D.sectors.map((s, i) => `
-    <div class="col-sm-6 col-lg-3">
-      <a class="sector-card reveal zoom" href="#contact" data-sector="${esc(s.title)}" style="--d:${(i % 4) * .08}s">
-        <img src="${s.image}" alt="" loading="lazy">
-        <div class="inner">
-          <span class="ico"><i class="fa-solid ${s.icon}"></i></span>
-          <h3>${esc(s.title)}<span class="jp">${esc(s.jp)}</span></h3>
-          <p>${esc(s.text)}</p>
-        </div>
-      </a>
-    </div>`).join("") + `
-    <div class="col-sm-6 col-lg-3">
-      <div class="sector-cta reveal zoom" style="--d:.24s">
-        <img class="bg-icon" src="assets/img/icon.webp" alt="" aria-hidden="true">
-        <div>
-          <span class="eyebrow" style="color:var(--sl-gold)">16 SSW fields</span>
-          <h3>Don't see your job here?</h3>
-          <p>Japan's SSW programme covers 16 industries, including driving, railway, cleaning and shipbuilding.</p>
-        </div>
-        <a class="btn-sl btn-sl--white btn-sl--sm align-self-start" href="#contact">Ask an advisor <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-    </div>`;
-
-  $("#reasonGrid").innerHTML = D.reasons.map((r, i) => `
-    <div class="col-sm-6">
-      <div class="reason reveal" style="--d:${i * .08}s">
-        <span class="ico"><i class="fa-solid ${r.icon}"></i></span>
-        <div><h4>${esc(r.title)}</h4><p>${esc(r.text)}</p></div>
-      </div>
-    </div>`).join("");
-
-  $("#stepList").innerHTML = D.steps.map((s, i) => `
-    <li class="step reveal" style="--d:${i * .1}s">
-      <span class="ico"><i class="fa-solid ${s.icon}"></i></span>
-      <div class="txt"><h4>${esc(s.title)}</h4><p>${esc(s.text)}</p></div>
-    </li>`).join("");
-
-  $("#galleryGrid").innerHTML = D.gallery.map((g, i) => `
-    <figure class="g-item reveal zoom m-0" style="--d:${i * .08}s">
-      <img src="${g.src}" alt="${esc(g.alt)}" loading="lazy">
-      <figcaption>${esc(g.label)}</figcaption>
-    </figure>`).join("");
-
-  $("#faqList").innerHTML = D.faqs.map((f, i) => `
-    <div class="accordion-item">
-      <h3 class="accordion-header m-0">
-        <button class="accordion-button ${i ? "collapsed" : ""}" type="button" data-bs-toggle="collapse" data-bs-target="#faq${i}" aria-expanded="${!i}" aria-controls="faq${i}">${esc(f.q)}</button>
-      </h3>
-      <div id="faq${i}" class="accordion-collapse collapse ${i ? "" : "show"}" data-bs-parent="#faqList">
-        <div class="accordion-body">${esc(f.a)}</div>
-      </div>
-    </div>`).join("");
+  /* Programmes, stats, sectors, reasons, steps, gallery and FAQ are written into
+     index.html by build.js (run `node build.js` after editing data.js). */
 
   // Marquee (content doubled for a seamless loop)
   const blossom = '<svg viewBox="-34 -34 68 68" aria-hidden="true"><g fill="#fff">' +
@@ -123,9 +45,6 @@
     '</g><circle r="5" fill="#FFD12D"/></svg>';
   const mItems = D.sectors.map(s => `<span class="marquee-item">${blossom}${esc(s.title)} <span class="jp">${esc(s.jp)}</span></span>`).join("");
   $("#marqueeTrack").innerHTML = mItems + mItems;
-
-  // Sector dropdown in form
-  $("#fSector").insertAdjacentHTML("beforeend", D.sectors.map(s => `<option>${esc(s.title)}</option>`).join(""));
 
   // Pre-select programme / sector when a card link is clicked
   document.addEventListener("click", e => {

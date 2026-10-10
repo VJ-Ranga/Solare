@@ -7,15 +7,18 @@ Programmes: Engineer / Humanities, Specified Skilled Worker (SSW), Employment fo
 - [x] HTML landing page — `public/index.html` (Bootstrap 5, Font Awesome, Poppins)
 - [x] Working enquiry form — `public/send.php` + PHPMailer (no WordPress)
 - [ ] Client review
-- [ ] Deploy to our shared hosting (cPanel or Hestia) and point solarejapan.com.lk
-- [ ] Turn on SPF / DKIM / DMARC for solarejapan.com.lk
+- [x] Live on cPanel at https://solarejapan.com.lk (repo in ~/solare-repo, web root ~/solarejapan.com.lk, private files ~/private)
+- [x] SPF / DKIM / DMARC set; Cloudflare Turnstile on the form
+- [x] SEO: static HTML, sitemap.xml, robots.txt, FAQ + agency structured data, branded preview image, local photos
+- [ ] Google Search Console: verify domain and submit sitemap
+- [ ] Google Business Profile (client)
 
 ## Waiting on client
 - Hotline phone number
 - WhatsApp number
 - SLBFE licence number
 - Office address + Google Maps pin
-- Real office / team / departure photos (demo uses Unsplash stock — marked "Demo image")
+- Real office / team / departure photos (site uses stock photos stored in `public/assets/img/photos/`)
 - Real headline numbers (stats section shows demo figures)
 - Social media links (Facebook, Instagram, TikTok, YouTube)
 
@@ -57,6 +60,9 @@ cd ~/solare-repo && ./deploy.sh ~/public_html
 
 ## Editing content
 All contact details and section content live in `public/assets/data.js`.
+After editing it, run `node build.js` — this writes the programmes, sectors, steps, gallery, FAQ
+and the Google structured data into `public/index.html` as real HTML, and refreshes `sitemap.xml`.
+Then commit, push and run `deploy.sh` on the server.
 Items with `status: "tbc"` show a yellow TBC badge until replaced.
 
 ## Brand
