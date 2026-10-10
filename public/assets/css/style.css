@@ -365,7 +365,7 @@ img { max-width: 100%; }
 
 /* ---------- 11. WHY SOLARE ---------- */
 .why { background: #fff; overflow: hidden; }
-.collage { position: relative; padding: 0 0 4rem 0; }
+.collage { position: relative; padding: 0 0 4rem 0; isolation: isolate; }
 .collage .img-a { position: relative; border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 4/5; width: 78%; box-shadow: var(--sh-md); }
 .collage .img-b { position: absolute; right: 0; bottom: 0; width: 52%; aspect-ratio: 1; border-radius: var(--r-xl); overflow: hidden; border: 8px solid #fff; box-shadow: var(--sh-lg); }
 .collage img { width: 100%; height: 100%; object-fit: cover; }
