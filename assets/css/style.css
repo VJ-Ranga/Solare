@@ -200,8 +200,8 @@ img { max-width: 100%; }
   background-size: 60px 30px; }
 .mnav-branch { position: absolute; z-index: -1; top: 64px; right: -70px; width: 230px; opacity: .35; pointer-events: none; transform-origin: top right; animation: sway 7s ease-in-out infinite alternate; }
 .mnav-kanji { position: absolute; z-index: -1; right: -10px; bottom: 120px; font-size: 9rem; font-weight: 700; line-height: 1; color: rgba(255,255,255,.05); writing-mode: vertical-rl; pointer-events: none; }
-.mnav-head { position: relative; z-index: 2; padding: 1.1rem 20px; border-bottom: 1px solid rgba(255,255,255,.1); }
-.mnav-close { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08); color: #fff; font-size: 1.2rem; display: grid; place-items: center; backdrop-filter: blur(6px); transition: background .25s, transform .35s var(--ease); }
+.mnav-head { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 20px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.mnav-close { flex: 0 0 48px; margin-left: auto; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08); color: #fff; font-size: 1.2rem; display: grid; place-items: center; backdrop-filter: blur(6px); transition: background .25s, transform .35s var(--ease); }
 .mnav-close:hover { background: var(--sl-pink); transform: rotate(90deg); }
 .mnav-body { display: flex; flex-direction: column; padding: .5rem 20px 1.5rem; }
 .mnav-eyebrow { font-size: var(--fs-eyebrow); font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--sl-sakura); margin: .5rem 0 .75rem; display: flex; gap: .6rem; align-items: center; }
