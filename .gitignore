@@ -9,3 +9,6 @@ index (2).html
 
 # Secrets — config.php exists only on each server / local machine
 private/config.php
+
+# Obsidian vault — project notes, kept local (repo is public)
+vault/
