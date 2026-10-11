@@ -63,6 +63,12 @@ All contact details and section content live in `public/assets/data.js`.
 After editing it, run `node build.js` — this writes the programmes, sectors, steps, gallery, FAQ
 and the Google structured data into `public/index.html` as real HTML, and refreshes `sitemap.xml`.
 Then commit, push and run `deploy.sh` on the server.
+
+## Fonts, icons and photos (all stored locally for speed)
+- `python3 tools/fonts.py` — rebuilds the small font files. Run it if new Japanese or Sinhala text is added
+  (the Japanese and Sinhala fonts only contain the characters used on the site).
+- `python3 tools/icons.py` — rebuilds the Font Awesome subset. Run it after using a new `fa-...` icon.
+- Photos live in `public/assets/img/photos/` as WebP. Bootstrap is in `public/assets/vendor/`.
 Items with `status: "tbc"` show a yellow TBC badge until replaced.
 
 ## Brand

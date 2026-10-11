@@ -173,22 +173,31 @@
   const fieldIds = { name: "fName", phone: "fPhone", email: "fEmail", age: "fAge", program: "fProgram", consent: "fConsent" };
   let token = "", turnstileOn = false;
 
+  const loadTurnstile = key => {                                  // optional Cloudflare Turnstile
+    if (turnstileOn) return;
+    turnstileOn = true;
+    const box = $("#turnstileBox"); box.hidden = false;
+    box.innerHTML = `<div class="cf-turnstile" data-sitekey="${esc(key)}"></div>`;
+    const s = document.createElement("script");
+    s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js"; s.async = true; s.defer = true;
+    document.head.appendChild(s);
+  };
   const getToken = () => fetch(form.action, { headers: { Accept: "application/json" }, cache: "no-store" })
     .then(r => r.json())
     .then(d => {
       if (!d.ok) return;
       token = d.token;
-      if (d.turnstile && !turnstileOn) {                          // optional Cloudflare Turnstile
-        turnstileOn = true;
-        const box = $("#turnstileBox"); box.hidden = false;
-        box.innerHTML = `<div class="cf-turnstile" data-sitekey="${esc(d.turnstile)}"></div>`;
-        const s = document.createElement("script");
-        s.src = "https://challenges.cloudflare.com/turnstile/v0/api.js"; s.async = true; s.defer = true;
-        document.head.appendChild(s);
-      }
+      if (d.turnstile) loadTurnstile(d.turnstile);
     })
     .catch(() => {});                                              // e.g. static preview with no PHP
-  getToken();
+
+  // Fetch the token (and the security check) only when the form is about to be seen
+  let formReady = false;
+  const prepareForm = () => { if (!formReady) { formReady = true; getToken(); } };
+  new IntersectionObserver((entries, obs) => {
+    if (entries.some(en => en.isIntersecting)) { prepareForm(); obs.disconnect(); }
+  }, { rootMargin: "800px 0px" }).observe(form);
+  form.addEventListener("focusin", prepareForm);
 
   const showAlert = msg => {
     alertBox.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i><span>${esc(msg)} ` +
@@ -219,10 +228,11 @@
     const allOk = els.map(validate).every(Boolean);
     if (!allOk) { const first = $(".is-invalid", form); first && first.focus(); return; }
 
-    const fd = new FormData(form);
-    fd.append("token", token);
     setBusy(true);
     try {
+      if (!token) await getToken();
+      const fd = new FormData(form);
+      fd.append("token", token);
       const res = await fetch(form.action, { method: "POST", body: fd, headers: { Accept: "application/json" } });
       const d = await res.json().catch(() => ({ ok: false, message: "Something went wrong." }));
       if (!d.ok) {
